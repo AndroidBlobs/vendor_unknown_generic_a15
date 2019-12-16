@@ -1,0 +1,19 @@
+<Austin_Command_File>
+	<Xloader_Command_Set>
+	</Xloader_Command_Set>
+	<Fastboot_Command_Set>
+		<cmd oem ddrtest load_lpm3/>
+		<cmd oem set_error_stop 0x0/>
+		<cmd oem ddrtest lpm3_func 0x10/>
+		<cmd oem multitest  0x1  async wait ddr_memtester 0x40000000 0x10000000 0x1 0x1/>
+		<cmd oem ddrtest ddr_exmbist_sr 0x1 0x1 0x1/>
+		<cmd oem multitest  0x2  async wait ddr_memtester 0x40000000 0x6000000 0x4 0x0/>
+		<cmd oem multitest  0x4  async wait ddr_memtester 0x46000000 0x6000000 0x4 0x0/>
+		<cmd oem multitest  0x8  async wait ddr_memtester 0x4C000000 0x4000000 0x4 0x0/>
+		<loop 0x4>
+		<cmd oem ddrtest ddr_exmbist_screen 0x1 0x1 0x1/>
+		</loop>
+		<cmd oem ddrtest lpm3_func 0x13/>
+		<cmd reboot/>
+	</Fastboot_Command_Set>
+</Austin_Command_File>
